@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<operators name="auto_unsupervised" version="6.0" docbundle="com/rapidminer/AutoUnsupervised/resources/i18n/OperatorsDocAutoUnsupervised">
+    <group key="">
+        <!-- This is an example how to specify Operators and Operator groups. The Operator groups define
+                where Operators will be located in the Operator tree. -->
+        
+        <group key="operator_test">
+           <operator>
+              <key>example_operator_key</key>
+              <class>com.rapidminer.AutoUnsupervised.operator.MyOwnOperator</class>
+              <icon>robot.png</icon>
+           </operator>
+         </group>
+        
+    </group>
+</operators>
