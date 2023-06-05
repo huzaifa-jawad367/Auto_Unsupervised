@@ -3,6 +3,8 @@
     <group key="">
         <!-- This is an example how to specify Operators and Operator groups. The Operator groups define
                 where Operators will be located in the Operator tree. -->
+
+		
         
         <group key="operator_test">
            <operator>
@@ -11,6 +13,68 @@
               <icon>robot.png</icon>
            </operator>
          </group>
+
+        <group key="">
+            <!-- <operator>
+                <key>auto_unsupervised</key>
+                <class>com.rapidminer.AutoUnsupervised.operator.AutoUnsupervisedOperator</class>
+                <icon>robot.png</icon>
+            </operator> -->
+
+            <group key ="nearest_neighbor_based" >
+
+				<group key="LOF">
+					<operator>
+						<key>Local Outlier Factor (LOF)</key>
+						<class>com.rapidminer.AutoUnsupervesived.operator.nearest_neighbor_based.LOFAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+				<group key="KNN">
+					<operator>
+						<key>k-NN Global Anomaly Score</key>
+						<class>com.rapidminer.AutoUnsupervised.operator.nearest_neighbor_based.KNNAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+				<group key="COF">
+					<operator>
+						<key>Connectivity-Based Outlier Factor (COF)</key>
+						<class>com.rapidminer.AutoUnsupervesived.operator.nearest_neighbor_based.COFAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+				<group key="LOCI">
+					<operator>
+						<key>Local Correlation Integeral (LOCI)</key>
+						<class>com.rapidminer.AutoUnsupervesived.operator.nearest_neighbor_based.LOCIAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+				<group key="aLOCI">
+					<operator>
+						<key>approximate Local Correlation Integral (aLOCI)</key>
+						<class>com.rapidminer.AutoUnsupervesived.operator.nearest_neighbor_based.ALOCIAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+				<group key="LoOP">
+					<operator>
+						<key>Local Outlier Probablity (LoOP)</key>
+						<class>com.rapidminer.AutoUnsupervesived.operator.nearest_neighbor_based.LoOPAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+				<group key="INFLO">
+					<operator>
+						<key>Influenced Outlierness (INFLO)</key>
+						<class>com.rapidminer.AutoUnsupervesived.operator.nearest_neighbor_based.INFLOAnomalyDetectionOperator</class>
+					</operator>
+				</group>
+
+			</group>
         
     </group>
+	</group>
+
 </operators>

@@ -5,8 +5,198 @@
     <operator>
       <key>example_operator_key</key>
       <name>Example Operator Name</name>
+      <synopsis>Adds a new Attribute that has a random value between 1 and 10</synopsis>
+      
     </operator>
-   
+
+    <operator>
+		<name>k-NN Global Anomaly Score</name>
+	   	<synopsis>Calculates the outlier score based on k-nearest-neighbors
+	   		implementation.</synopsis>
+		<help> <p>
+ 			This operator calculates the anomaly score based on the k nearest 
+ 			neighbors implementation. The outlier score is by default the 
+ 			average of the distance to the nearest neighbors, it can be set to 
+ 			the distance to the kth nearest neighbor which is similar to the 
+ 			algorithm proposed by Ramaswamy et al (2000) by setting the 
+ 			corresponding parameter. The outlier score is calculated according 
+ 			to the measure type selected. The higher the outlier the more 
+ 			anomalous the instance is. 
+ 			
+ 			The operator is also able to read and write a model containing the k
+			nearest neighbors set. Typically, 99% of the execution time is used to
+			compute the neighbors such that is a good idea to store the model, for
+			example, when looping over a parameter. The operator checks whether the
+			model and the ExampleSet fit together. The model can be used for any of
+			the nearest-neighbor based algorithms. The parameter k used to create
+			the model needs to be the same or larger as the parameter k specified in
+			the operator. Otherwise, the model is re-computed.
+			</p>
+		</help>	
+	</operator>
+	<operator>
+		<name>Local Outlier Factor (LOF)</name>
+	   	<synopsis>Calculates the outlier score based on Local Outlier Factor 
+	   		implementation, proposed by Breunig et al [1999; 2000].</synopsis>
+		<help> <p>	
+			The LOF anomaly detection calculates the anomaly score according to 
+			the local outlier factor algorithm proposed by Breunig el al.
+  			
+			LOF is one of the earliest local density based approaches proposed. 
+			There are several steps in the calculation of the LOF. The initial 
+			step involves getting the nearest neighbors set.The definition of 
+			the k-distance employed is the one proposed in the original paper in 
+			order to handle duplicates. The definition states that the 
+			k-distance(p)   has at least k neighbors  with distinct spatial 
+			coordinates that have a distance less than or equal it and at most 
+			k-1 of such neighbors with distance strictly less than it.  The 
+			reachability distance (reach-dist(p,o)) is the maximum of the 
+			distance between point p and o and the k-distance(o). The local 
+			reachability is the inverse of the average reachability distance 
+			over the nearest neighborhood set. Finally the LOF is   calculated 
+			as the average of the ratio of the local reachability  density over 
+			the neighborhood set. The values of the LOF oscillates with the 
+			change in the size of the neighborhood. Thus a range is defined for 
+			the size of the neighborhood. The maximum LOF over that range is 
+			taken as the final LOF score. 
+ 
+			A normal instance has an outlier value of approximately 1, while 
+			outliers have values greater than 1. 	
+			
+			The operator is also able to read and write a model containing the k
+			nearest neighbors set. Typically, 99% of the execution time is used to
+			compute the neighbors such that is a good idea to store the model, for
+			example, when looping over a parameter. The operator checks whether the
+			model and the ExampleSet fit together. The model can be used for any of
+			the nearest-neighbor based algorithms. The parameter k used to create
+			the model needs to be the same or larger as the parameter k specified in
+			the operator. Otherwise, the model is re-computed.		
+ 			</p>
+		</help>
+	</operator>
+
+	<operator>
+		<name>Local Outlier Probablity (LoOP)</name>
+	   	<synopsis>Calculates the outlier score based on Local Outlier 
+	   		Probability, proposed by Kriegel et al [2009].</synopsis>
+		<help> <p>
+			The LoOP score represents the probability that the object is a local
+			density outlier. The algorithm combines the benefits of local 
+			density approaches being that it doesn't assume any distribution for
+			the data as well as the mathematical concepts of the statistical 
+			methods. The Fact that the score is a probability facilitates 
+			comparisons. LoOP is also based on the nearest neighbors set. 
+			The definition of the k-distance used is the same as the one 
+			proposed by Breunig et al [1999; 2000] to handle duplicates.
+			
+			The operator is also able to read and write a model containing the k
+			nearest neighbors set. Typically, 99% of the execution time is used to
+			compute the neighbors such that is a good idea to store the model, for
+			example, when looping over a parameter. The operator checks whether the
+			model and the ExampleSet fit together. The model can be used for any of
+			the nearest-neighbor based algorithms. The parameter k used to create
+			the model needs to be the same or larger as the parameter k specified in
+			the operator. Otherwise, the model is re-computed.
+ 			</p>
+		</help>
+	</operator>
+
+  <operator>
+		<name>Connectivity-Based Outlier Factor (COF)</name>
+	   	<synopsis>Calculates the outlier score based on Connectivity Based 
+	   	Outlier Factor, proposed by Tang el al [2002]</synopsis>
+		<help> <p>
+			The COF is a modification of LOF algorithm (Breunig el al, 2000) 
+			proposed in order to handle outliers deviating from low density 
+			patterns. The definition of the k-distance used is the same as the 
+			one proposed by Breunig et al [1999; 2000] to handle duplicates. The 
+			normal instances will have an outlier score of approximately 1, 
+			while outliers have a value greater than 1.  
+			
+			The operator is also able to read and write a model containing the k
+			nearest neighbors set. Typically, 99% of the execution time is used to
+			compute the neighbors such that is a good idea to store the model, for
+			example, when looping over a parameter. The operator checks whether the
+			model and the ExampleSet fit together. The model can be used for any of
+			the nearest-neighbor based algorithms. The parameter k used to create
+			the model needs to be the same or larger as the parameter k specified in
+			the operator. Otherwise, the model is re-computed.
+			</p>
+		</help>
+	</operator>
+
+	<operator>
+		<name>Influenced Outlierness (INFLO)</name>
+	   	<synopsis>Calculates the outlier score based on Influenced outlierness,
+	   		proposed by Jin et al [2006].</synopsis>
+		<help> <p>
+			INFLO is a local density method that takes into consideration the 
+			neighbors and the reverse neighbors when estimating the local 
+			density of a given point. The algorithm is also based on the nearest
+			neighbors set.  The definition of the k-distance used is the same as 
+			the one proposed by  Breunig et al [1999; 2000] to handle duplicates. 
+			The normal instances will have an outlier score of approximately 1, 
+			while outliers have a value greater than 1.
+			
+			The operator is also able to read and write a model containing the k
+			nearest neighbors set. Typically, 99% of the execution time is used to
+			compute the neighbors such that is a good idea to store the model, for
+			example, when looping over a parameter. The operator checks whether the
+			model and the ExampleSet fit together. The model can be used for any of
+			the nearest-neighbor based algorithms. The parameter k used to create
+			the model needs to be the same or larger as the parameter k specified in
+			the operator. Otherwise, the model is re-computed.
+			</p>
+		</help>
+	</operator>
+
+	<operator>
+		<name>Local Correlation Integeral (LOCI)</name>
+	   	<synopsis>Calculates the outlier score based on the Local Correlation 
+	   	Integral, proposed by  Papadimitriou et al [2003].</synopsis>
+		<help> <p>
+			The algorithm has the following advantages over other approaches: 
+			The results are not highly affected by the parameters and it 
+			provides an automatic statistically intuitive cut off to determine 
+			the outliers.
+
+			The computation of the LOCI score requires the calculation of MDEF 
+			and &#x3C3;MDEF. MDEF for a point p at radius r refers to the 
+			deviation of the density of p to that in its average local 
+			neighborhood density. &#x3C3;MDEF is the normalized standard 
+			deviation of the point relative to its local neighborhood.
+
+			The original publication suggests the following flagging scheme: The 
+			object should be flagged as an outlier if MDEF(p, r, &#x3B1;)&gt;  
+			3 *&#x3C3;MDEF(p, r, &#x3B1;). The operator produces an outlier 
+			score which corresponds to the maximum ratio between 
+			MDEF(p, r, &#x3B1;) and &#x3C3;MDEF(p, r, &#x3B1;) over all r. The 
+			higher the ratio the more likely the object is an outlier. The 
+			proposed threshold to determine outliers is 3.
+			</p> 
+		</help>
+	</operator>
+
+	<operator>
+		<name>approximate Local Correlation Integral (aLOCI)</name>
+	   	<synopsis>Calculates the max outlier score based on the approximate 
+	   		Local Correlation Integral (aLOCI), proposed by Papadimitriou et al 
+	   		[2003].</synopsis>
+		<help> <p>
+			This algorithm is an approximation to Local Correlation Integer 
+			(LOCI) proposed by Papadimitriou et al [2003]. aLOCI provides an 
+			automatic statistically intuitive cut off to determine the outliers. 
+			The algorithm calculates MDEF and &#x3C3;MDEF for all objects, the 
+			outlier score assigned to each object is the maximum ratio between 
+			MDEF and &#x3C3;MDEF. To estimate MDEF and &#x3C3;MDEF in a faster 
+			way than LOCI, the algorithm uses box counting, using quadtrees the 
+			objects in the same cell are considered neighbors for radius equals 
+			to the diameter of the cell.
+			</p>
+		</help>
+	</operator>
+
+  
 
     <!-- This is how group keys are translated: -->
     
